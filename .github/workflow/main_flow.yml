@@ -1,0 +1,11 @@
+name: main flow
+
+on: 
+  push:
+    branchs:
+      - master
+
+jobs:
+  call-flow1-job-1: # just a job name
+    steps:
+      - uses: ./flow1-job
