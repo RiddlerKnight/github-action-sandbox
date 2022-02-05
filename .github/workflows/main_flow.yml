@@ -16,4 +16,4 @@ jobs:
         run: ls -la
 
   call-flow1-job-1:
-    uses: ./.github/workflows/flow1.yml@master
+    uses: ./.github/workflows/flow1.yml
