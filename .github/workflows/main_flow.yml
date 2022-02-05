@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  call-flow1-job-1: # just a job name
+  simple-job: # just a job name
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -15,5 +15,5 @@ jobs:
       - name: file check
         run: ls -la
 
-      - name: try call flow1
-        uses: ./.github/workflows/flow1.yml@master
+  call-flow1-job-1:
+    uses: ./.github/workflows/flow1.yml@master
