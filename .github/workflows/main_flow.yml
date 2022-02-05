@@ -9,5 +9,8 @@ jobs:
   call-flow1-job-1: # just a job name
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
       - name: try call flow1
         uses: ./.github/workflows/flow1.yml@master
