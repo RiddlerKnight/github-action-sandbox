@@ -1,6 +1,6 @@
 name: 'main flow'
 
-on: 
+on:
   push:
     branchs:
       - master
@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: try call flow1
-        uses: ./flow1-job
+        uses: ./flow1.yml@master
