@@ -12,5 +12,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: file check
+        run: ls -la
+
       - name: try call flow1
         uses: ./.github/workflows/flow1.yml@master
