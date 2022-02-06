@@ -6,14 +6,17 @@ on:
       - master
 
 jobs:
-  simple-job: # just a job name
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
+  # simple-job: # just a job name
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v2
 
-      - name: file check
-        run: ls -la
+  #     - name: file check
+  #       run: ls -la
 
   call-flow1-job-1:
     uses: ./.github/workflows/flow1.yml
+
+  call-flow2-job-2:
+    uses: ./.github/workflows/flow2.yml

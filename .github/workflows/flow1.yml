@@ -27,4 +27,4 @@ jobs:
               hanoi_tw(ndisk - 1,  unset_peg, to_peg)
               return
 
-          hanoi_tw(5, 0, 3)
+          hanoi_tw(5, 1, 3)
