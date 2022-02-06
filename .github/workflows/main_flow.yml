@@ -23,20 +23,33 @@ jobs:
     needs: call-flow1-job-1
     uses: ./.github/workflows/flow2.yml
 
+  wait-for-test-only-job1:
+    runs-on: ubuntu-latest
+    needs:
+      - call-flow1-job-1
+    steps:
+      - name: Check Only call-flow1-job-1
+        # jobs is not avaliavle in this context
+        # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
+        run: echo "Only call-flow1-job-1 succeeded"
+
+  wait-for-test-only-job2:
+    runs-on: ubuntu-latest
+    needs:
+      - call-flow2-job-2
+    steps:
+      - name: Check Only call-flow2-job-2
+        # jobs is not avaliavle in this context
+        # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
+        run: echo "Only call-flow2-job-2 succeeded"
+
   wait-for-test:
     runs-on: ubuntu-latest
     needs:
       - call-flow1-job-1
       - call-flow2-job-2
     steps:
-      - name: Check Only call-flow1-job-1
-        if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
-        run: echo "Only call-flow1-job-1 succeeded"
-
-      - name: Check Only call-flow2-job-2
-        if: '${{ jobs.call-flow1-job-1.if != "success" && jobs.call-flow2-job-2.if == "success" }}'
-        run: echo "Only call-flow2-job-2 succeeded"
-
       - name: Check All
-        if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if == "success" }}'
+        # jobs is not avaliavle in this context
+        # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if == "success" }}'
         run: echo "All jobs are done"
