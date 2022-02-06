@@ -30,13 +30,13 @@ jobs:
       - call-flow2-job-2
     steps:
       - name: Check Only call-flow1-job-1
-        if: '${{ jobs.call-flow1-job-1.status == "success" && jobs.call-flow2-job-2.status != "success" }}'
+        if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
         run: echo "Only call-flow1-job-1 succeeded"
 
       - name: Check Only call-flow2-job-2
-        if: '${{ jobs.call-flow1-job-1.status != "success" && jobs.call-flow2-job-2.status == "success" }}'
+        if: '${{ jobs.call-flow1-job-1.if != "success" && jobs.call-flow2-job-2.if == "success" }}'
         run: echo "Only call-flow2-job-2 succeeded"
 
       - name: Check All
-        if: '${{ jobs.call-flow1-job-1.status == "success" && jobs.call-flow2-job-2.status == "success" }}'
+        if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if == "success" }}'
         run: echo "All jobs are done"
