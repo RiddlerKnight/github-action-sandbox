@@ -1,0 +1,19 @@
+name: open PR Workflow
+
+on:
+  pull_request:
+    types:
+      - "opened"
+
+jobs:
+  first-job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: "Echo message"
+        run: echo "PR is opened"
+
+      - name: "Check Files"
+        run: ls -lah
