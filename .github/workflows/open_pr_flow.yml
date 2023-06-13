@@ -13,7 +13,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: "Echo message"
-        run: echo "PR is opened"
+        run: |-
+          echo -e "
+            PR is opened
+          "
+          echo "😅"
 
       - name: "Check Files"
         run: ls -lah
