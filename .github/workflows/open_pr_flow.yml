@@ -2,8 +2,6 @@ name: open PR Workflow
 
 on:
   pull_request:
-    types:
-      - "opened"
 
 jobs:
   first-job:
