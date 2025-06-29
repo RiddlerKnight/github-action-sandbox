@@ -27,7 +27,7 @@ jobs:
       - name: Gitversion configure check
         run: |
           echo $GITVERSION_PATH
-          /opt/hostedtoolcache/GitVersion.Tool/6.3.0/dotnet-gitversion --roll-forward Major /home/runner/work/github-action-sandbox/github-action-sandbox /output json /l console /config GitVersion.yml
+          /opt/hostedtoolcache/GitVersion.Tool/6.3.0/dotnet-gitversion --roll-forward Major /home/runner/work/github-action-sandbox/github-action-sandbox /output json /l console
 
       - name: Determine Version
         id: version_step # step id used as reference for output values
