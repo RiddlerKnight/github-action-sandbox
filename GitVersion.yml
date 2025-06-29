@@ -1,0 +1,29 @@
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatchTag
+mode: ContinuousDeployment
+branches:
+  production:
+    regex: ^master$|^main$
+    #tag: ''
+    increment: Minor
+    source-branches: ['release']
+  develop:
+    regex: ^dev(elop)?(ment)?$
+    mode: ContinuousDeployment
+    increment: Patch
+  release:
+    regex: ^releases?[/-]
+    source-branches: [ 'develop', 'release' , 'hotfix', 'feature' ]
+    # is-release-branch: false -> this keeps ignore release branch name from version calculation.
+    is-release-branch: false
+    tag: beta
+    increment: Patch
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    source-branches: [ 'develop', 'production' ]
+  feature:
+    regex: ^feature(s)?$[/-]
+    mode: ContinuousDeployment
+ignore:
+  sha: []
+merge-message-formats: {}

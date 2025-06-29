@@ -16,8 +16,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 100
+        # with:
+        #   fetch-depth: 100
+
+      - name: Determine Version
+        id: version_step # step id used as reference for output values
+        uses: gittools/actions/gitversion/execute@v3.2.1
 
       - name: check vars
         run: |
@@ -36,6 +40,8 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build And push
+        env:
+          SEMVER: ${{ steps.version_step.outputs.semVer }}
         run: |
           az acr login --name buapps.azurecr.io
-          docker buildx build -t buapps.azurecr.io/demo-app/hello-word-py:test-ci --push .
+          docker buildx build -t buapps.azurecr.io/demo-app/hello-word-py:${SEMVER} --push .
