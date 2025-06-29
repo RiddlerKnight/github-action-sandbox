@@ -32,10 +32,18 @@ jobs:
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
-      - name: ACR build
-        uses: azure/acr-build@v1
-        with:
-          registry: buapps.azurecr.io
-          repository: demo-app
-          image: hello-word-py
-          tag: test-ci
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build And push
+        run: |
+          az acr login --name buapps.azurecr.io
+          docker buildx build -t buapps.azurecr.io/demo-app/hello-word-py:test-ci --push .
+
+      # - name: ACR build
+      #   uses: azure/acr-build@v1
+      #   with:
+      #     registry: buapps.azurecr.io
+      #     repository: demo-app
+      #     image: hello-word-py
+      #     tag: test-ci
