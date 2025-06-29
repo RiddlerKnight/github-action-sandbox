@@ -1,0 +1,23 @@
+# name: "main flow"
+
+# on:
+#   push:
+#     branches:
+#       - master
+
+# jobs:
+#   fetch-repo: # just a job name
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: checkout
+#         uses: actions/checkout@v2
+
+#       - name: file check
+#         run: ls -la
+
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: "3.12"
+
+#       - name: python run
+#         run: python main.py

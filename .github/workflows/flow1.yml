@@ -1,30 +1,30 @@
-name: flow1
+# name: flow1
 
-on: workflow_call
+# on: workflow_call
 
-jobs:
-  flow1-job: # just a job name
-    runs-on: ubuntu-latest
-    steps:
-      - name: hello-1
-        run: echo hello_world
+# jobs:
+#   flow1-job: # just a job name
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: hello-1
+#         run: echo hello_world
 
-      - name: setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'
+#       - name: setup python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.10'
 
-      - name: python run hanoi-town
-        shell: python
-        run: |
-          def hanoi_tw(ndisk, from_peg, to_peg):
-              if ndisk == 1:
-                  print("Move disk from peg {0} to peg {1}".format(from_peg, to_peg))
-                  return
-              unset_peg = 6 - from_peg - to_peg
-              hanoi_tw(ndisk - 1,  from_peg, unset_peg)
-              print("Move disk from peg {0} to peg {1}".format(from_peg, to_peg))
-              hanoi_tw(ndisk - 1,  unset_peg, to_peg)
-              return
+#       - name: python run hanoi-town
+#         shell: python
+#         run: |
+#           def hanoi_tw(ndisk, from_peg, to_peg):
+#               if ndisk == 1:
+#                   print("Move disk from peg {0} to peg {1}".format(from_peg, to_peg))
+#                   return
+#               unset_peg = 6 - from_peg - to_peg
+#               hanoi_tw(ndisk - 1,  from_peg, unset_peg)
+#               print("Move disk from peg {0} to peg {1}".format(from_peg, to_peg))
+#               hanoi_tw(ndisk - 1,  unset_peg, to_peg)
+#               return
 
-          hanoi_tw(5, 1, 3)
+#           hanoi_tw(5, 1, 3)

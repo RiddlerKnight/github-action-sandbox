@@ -1,55 +1,55 @@
-name: 'main flow'
+# name: 'main flow'
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  # simple-job: # just a job name
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: checkout
-  #       uses: actions/checkout@v2
+# jobs:
+#   # simple-job: # just a job name
+#   #   runs-on: ubuntu-latest
+#   #   steps:
+#   #     - name: checkout
+#   #       uses: actions/checkout@v2
 
-  #     - name: file check
-  #       run: ls -la
+#   #     - name: file check
+#   #       run: ls -la
 
-  call-flow1-job-1:
-    uses: ./.github/workflows/flow1.yml
-    # steps is not allowed in a workflow_call job
+#   call-flow1-job-1:
+#     uses: ./.github/workflows/flow1.yml
+#     # steps is not allowed in a workflow_call job
 
-  call-flow2-job-2:
-    needs: call-flow1-job-1
-    uses: ./.github/workflows/flow2.yml
+#   call-flow2-job-2:
+#     needs: call-flow1-job-1
+#     uses: ./.github/workflows/flow2.yml
 
-  wait-for-test-only-job1:
-    runs-on: ubuntu-latest
-    needs:
-      - call-flow1-job-1
-    steps:
-      - name: Check Only call-flow1-job-1
-        # jobs is not avaliavle in this context
-        # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
-        run: echo "Only call-flow1-job-1 succeeded"
+#   wait-for-test-only-job1:
+#     runs-on: ubuntu-latest
+#     needs:
+#       - call-flow1-job-1
+#     steps:
+#       - name: Check Only call-flow1-job-1
+#         # jobs is not avaliavle in this context
+#         # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
+#         run: echo "Only call-flow1-job-1 succeeded"
 
-  wait-for-test-only-job2:
-    runs-on: ubuntu-latest
-    needs:
-      - call-flow2-job-2
-    steps:
-      - name: Check Only call-flow2-job-2
-        # jobs is not avaliavle in this context
-        # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
-        run: echo "Only call-flow2-job-2 succeeded"
+#   wait-for-test-only-job2:
+#     runs-on: ubuntu-latest
+#     needs:
+#       - call-flow2-job-2
+#     steps:
+#       - name: Check Only call-flow2-job-2
+#         # jobs is not avaliavle in this context
+#         # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if != "success" }}'
+#         run: echo "Only call-flow2-job-2 succeeded"
 
-  wait-for-test:
-    runs-on: ubuntu-latest
-    needs:
-      - call-flow1-job-1
-      - call-flow2-job-2
-    steps:
-      - name: Check All
-        # jobs is not avaliavle in this context
-        # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if == "success" }}'
-        run: echo "All jobs are done"
+#   wait-for-test:
+#     runs-on: ubuntu-latest
+#     needs:
+#       - call-flow1-job-1
+#       - call-flow2-job-2
+#     steps:
+#       - name: Check All
+#         # jobs is not avaliavle in this context
+#         # if: '${{ jobs.call-flow1-job-1.if == "success" && jobs.call-flow2-job-2.if == "success" }}'
+#         run: echo "All jobs are done"

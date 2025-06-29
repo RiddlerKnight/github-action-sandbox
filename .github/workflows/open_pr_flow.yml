@@ -1,21 +1,21 @@
-name: open PR Workflow
+# name: open PR Workflow
 
-on:
-  pull_request:
+# on:
+#   pull_request:
 
-jobs:
-  first-job:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - name: checkout
+#         uses: actions/checkout@v3
 
-      - name: "Echo message"
-        run: |-
-          echo -e "
-            PR is opened
-          "
-          echo "😅"
+#       - name: "Echo message"
+#         run: |-
+#           echo -e "
+#             PR is opened
+#           "
+#           echo "😅"
 
-      - name: "Check Files"
-        run: ls -lah
+#       - name: "Check Files"
+#         run: ls -lah
