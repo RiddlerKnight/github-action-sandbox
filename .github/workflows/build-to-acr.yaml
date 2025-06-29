@@ -24,6 +24,10 @@ jobs:
         with:
           versionSpec: "6.3.x"
 
+      - name: Gitversion configure check
+        run: |
+          echo $GITVERSION_PATH
+
       - name: Determine Version
         id: version_step # step id used as reference for output values
         uses: gittools/actions/gitversion/execute@v3.2.1
