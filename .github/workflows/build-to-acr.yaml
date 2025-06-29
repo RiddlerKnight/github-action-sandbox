@@ -39,11 +39,3 @@ jobs:
         run: |
           az acr login --name buapps.azurecr.io
           docker buildx build -t buapps.azurecr.io/demo-app/hello-word-py:test-ci --push .
-
-      # - name: ACR build
-      #   uses: azure/acr-build@v1
-      #   with:
-      #     registry: buapps.azurecr.io
-      #     repository: demo-app
-      #     image: hello-word-py
-      #     tag: test-ci
